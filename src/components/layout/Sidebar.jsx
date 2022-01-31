@@ -6,7 +6,7 @@ import Gym from '../../assets/img/dumbbell.svg';
 
 const Div = styled.aside`
 	background: black;
-	width: 117px;
+	min-width: 117px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -33,8 +33,7 @@ const Icon = styled.li`
 	width: 64px;
 	background: white;
 	border-radius: 6px;
-	/* margin-bottom: 20px; */
-	margin: auto;
+	margin-bottom: 20px;
 
 	a {
 		display: flex;
