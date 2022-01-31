@@ -1,45 +1,33 @@
-import { useState } from 'react'
-import logo from './logo.svg'
-import './App.css'
+import { Outlet } from 'react-router-dom';
+import styled from 'styled-components';
+import './assets/css/reset.css';
+import { Header } from './components/layout/Header';
+import { Sidebar } from './components/layout/Sidebar';
+
+const Div = styled.div`
+	@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap');
+
+	font-family: 'Roboto', sans-serif;
+	font-weight: 400;
+	height: 100%;
+`;
+
+const MainContent = styled.div`
+	display: flex;
+	align-items: stretch;
+	height: 100%;
+`;
 
 function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button type="button" onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.jsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
-      </header>
-    </div>
-  )
+	return (
+		<Div className="App">
+			<Header />
+			<MainContent>
+				<Sidebar />
+				<Outlet />
+			</MainContent>
+		</Div>
+	);
 }
 
-export default App
+export default App;
