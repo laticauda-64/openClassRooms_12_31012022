@@ -76,10 +76,10 @@ export const Activity = () => {
 
 const CustomTooltip = ({ active, payload }) =>
 	active ? (
-		<div className="chart-tooltip">
+		<TooltipBlock>
 			<div>{payload[0].value}kg</div>
 			<div>{payload[1].value}kCal</div>
-		</div>
+		</TooltipBlock>
 	) : null;
 
 const Figure = styled.figure`
@@ -132,5 +132,17 @@ const Legend = styled.div`
 				background-color: red;
 			}
 		}
+	}
+`;
+
+const TooltipBlock = styled.div`
+	background: #e60000;
+	color: white;
+	font-size: 9px;
+	font-weight: 500;
+	padding: 15px 10px;
+
+	div:first-child {
+		margin-bottom: 10px;
 	}
 `;
