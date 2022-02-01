@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Activity } from '../components/ui/Activity';
 import { Stats } from '../components/ui/Stats';
 
 export const Dashboard = () => {
@@ -16,7 +17,9 @@ export const Dashboard = () => {
 			</h1>
 			<MainDesc>Félicitation ! Vous avez explosé vos objectifs hier 👏</MainDesc>
 			<Results>
-				<Graphs></Graphs>
+				<Graphs>
+					<Activity />
+				</Graphs>
 				<Metrics>
 					{testData.map((e, i) => (
 						<Stats key={i} type={e[0]} val={e[1]} />
@@ -49,10 +52,10 @@ const MainDesc = styled.p`
 const Results = styled.article`
 	min-height: 610px;
 	display: flex;
+	margin-top: 77px;
 `;
 
 const Graphs = styled.div`
-	background: pink;
 	min-width: 835px;
 	margin: 0 30px 0 0;
 `;
