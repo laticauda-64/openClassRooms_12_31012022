@@ -141,6 +141,7 @@ const TooltipBlock = styled.div`
 	font-size: 9px;
 	font-weight: 500;
 	padding: 15px 10px;
+	box-shadow: -8px 5px 8px -2px rgba(0, 0, 0, 0.3);
 
 	div:first-child {
 		margin-bottom: 10px;
