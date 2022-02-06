@@ -84,6 +84,7 @@ const CustomTooltip = ({ active, payload }) =>
 
 const Figure = styled.figure`
 	height: 320px;
+	width: 100%;
 	background: #fbfbfb;
 	border-radius: 5px;
 	display: flex;

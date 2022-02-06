@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 import { Activity } from '../components/ui/Activity';
+import { Balance } from '../components/ui/Balance';
+import { Score } from '../components/ui/Score';
 import { Stats } from '../components/ui/Stats';
+import { TimingSession } from '../components/ui/TimingSession';
 
 export const Dashboard = () => {
 	const testData = [
@@ -19,6 +22,9 @@ export const Dashboard = () => {
 			<Results>
 				<Graphs>
 					<Activity />
+					<TimingSession />
+					<Balance />
+					<Score />
 				</Graphs>
 				<Metrics>
 					{testData.map((e, i) => (
@@ -56,8 +62,10 @@ const Results = styled.article`
 `;
 
 const Graphs = styled.div`
-	min-width: 835px;
+	width: 835px;
 	margin: 0 30px 0 0;
+	display: flex;
+	flex-wrap: wrap;
 `;
 
 const Metrics = styled.ul`
