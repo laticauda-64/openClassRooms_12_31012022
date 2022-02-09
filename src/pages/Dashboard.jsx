@@ -1,9 +1,11 @@
+import { useEffect } from 'react';
 import styled from 'styled-components';
 import { Activity } from '../components/ui/Activity';
 import { Balance } from '../components/ui/Balance';
 import { Score } from '../components/ui/Score';
 import { Stats } from '../components/ui/Stats';
 import { TimingSession } from '../components/ui/TimingSession';
+import { useStore } from '../utils/useStore';
 
 export const Dashboard = () => {
 	const testData = [
@@ -13,11 +15,16 @@ export const Dashboard = () => {
 		['lipidCount', '50'],
 	];
 
+	// console.log(useStore());
+	const { user, activity, sessionsAverage, performance, getData } = useStore();
+
+	useEffect(() => {
+		getData();
+	}, []);
+
 	return (
 		<Main>
-			<h1>
-				Bonjour <span>Thomas</span>
-			</h1>
+			<h1>Bonjour {user?.userInfos?.firstName && <span>Thomas</span>}</h1>
 			<MainDesc>Félicitation ! Vous avez explosé vos objectifs hier 👏</MainDesc>
 			<Results>
 				<Graphs>
