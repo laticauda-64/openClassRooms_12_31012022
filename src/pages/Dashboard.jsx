@@ -1,25 +1,21 @@
 import { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { Activity } from '../components/ui/Activity';
+import { Metrics } from '../components/ui/Metrics';
 import { Balance } from '../components/ui/Balance';
 import { Score } from '../components/ui/Score';
-import { Stats } from '../components/ui/Stats';
 import { TimingSession } from '../components/ui/TimingSession';
 import { useStore } from '../utils/useStore';
 
 export const Dashboard = () => {
-	const testData = [
-		['calorieCount', '1930'],
-		['proteinCount', '155'],
-		['carbohydrateCount', '290'],
-		['lipidCount', '50'],
-	];
+	let params = useParams();
+	console.log(params.id);
 
-	// console.log(useStore());
-	const { user, activity, sessionsAverage, performance, getData } = useStore();
+	const { user, getUser } = useStore();
 
 	useEffect(() => {
-		getData();
+		getUser();
 	}, []);
 
 	return (
@@ -33,11 +29,7 @@ export const Dashboard = () => {
 					<Balance />
 					<Score />
 				</Graphs>
-				<Metrics>
-					{testData.map((e, i) => (
-						<Stats key={i} type={e[0]} val={e[1]} />
-					))}
-				</Metrics>
+				<Metrics />
 			</Results>
 		</Main>
 	);
@@ -73,12 +65,4 @@ const Graphs = styled.div`
 	margin: 0 30px 0 0;
 	display: flex;
 	flex-wrap: wrap;
-`;
-
-const Metrics = styled.ul`
-	min-width: 258px;
-	display: flex;
-	flex-direction: column;
-	align-items: stretch;
-	justify-content: space-between;
 `;
