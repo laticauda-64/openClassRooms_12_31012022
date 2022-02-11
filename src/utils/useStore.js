@@ -1,17 +1,24 @@
 import create from 'zustand';
+import { devtools } from 'zustand/middleware';
+import config from '../config/config';
+import { users, activities, sessionsList, performances } from '../assets/data/mock';
 
-export const useStore = create((set, get) => ({
+const store = (set, get) => ({
 	user: {},
 	activity: {},
 	sessionsAverage: {},
 	performance: {},
 	getUser: async () => {
-		// Fetch user from id, if user returned, fetch the rest of the datas
+		if (config.mockedData) {
+			set({ user: users[0], activity: activities[0], sessionsAverage: sessionsList[0], performance: performances[0] }, true, 'setMockedData');
+			return;
+		}
+		// Should we use mocked Data or fetch api ?
 		fetch('http://localhost:3000/user/12')
 			.then((resp) => resp.json())
 			.then((resp) => {
 				console.log(resp.data);
-				set({ user: resp.data });
+				set({ user: resp.data }, false, 'setUser');
 				get().getActivity();
 				get().getSessions();
 				get().getPerformance();
@@ -23,7 +30,7 @@ export const useStore = create((set, get) => ({
 			.then((resp) => resp.json())
 			.then((resp) => {
 				console.log(resp.data);
-				set({ activity: resp.data });
+				set({ activity: resp.data }, false, 'setActivity');
 			});
 	},
 	getSessions: async () => {
@@ -31,7 +38,7 @@ export const useStore = create((set, get) => ({
 			.then((resp) => resp.json())
 			.then((resp) => {
 				console.log(resp.data);
-				set({ sessionsAverage: resp.data });
+				set({ sessionsAverage: resp.data }, false, 'setSessionsAverage');
 			});
 	},
 	getPerformance: async () => {
@@ -39,7 +46,9 @@ export const useStore = create((set, get) => ({
 			.then((resp) => resp.json())
 			.then((resp) => {
 				console.log(resp.data);
-				set({ performance: resp.data });
+				set({ performance: resp.data }, false, 'setPeformance');
 			});
 	},
-}));
+});
+
+export const useStore = create(devtools(store));

@@ -18,6 +18,16 @@ export const Dashboard = () => {
 		getUser();
 	}, []);
 
+	// Mock
+	const rawInput = {
+		keyData: {
+			calorieCount: '1930',
+			proteinCount: '155',
+			carbohydrateCount: '290',
+			lipidCount: '50',
+		},
+	};
+
 	return (
 		<Main>
 			<h1>Bonjour {user?.userInfos?.firstName && <span>Thomas</span>}</h1>
@@ -29,7 +39,7 @@ export const Dashboard = () => {
 					<Balance />
 					<Score />
 				</Graphs>
-				<Metrics />
+				<Metrics data={rawInput} />
 			</Results>
 		</Main>
 	);
