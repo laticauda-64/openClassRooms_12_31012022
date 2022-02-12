@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import { PieChart, Pie, Legend, Cell, ResponsiveContainer } from 'recharts';
 
 export const Score = ({ userScore }) => {
-	console.log(userScore);
 	return (
 		<Figure>
 			<Title>Score</Title>

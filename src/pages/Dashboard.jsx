@@ -11,23 +11,12 @@ import { Error404 } from './Error404';
 
 export const Dashboard = () => {
 	let params = useParams();
-	console.log(params.id);
 
 	const { user, activity, sesssionsAverage, performance, getUser } = useStore();
 
 	useEffect(() => {
 		getUser();
 	}, []);
-
-	// Mock
-	const rawInput = {
-		keyData: {
-			calorieCount: '1930',
-			proteinCount: '155',
-			carbohydrateCount: '290',
-			lipidCount: '50',
-		},
-	};
 
 	if (user) {
 		return (
@@ -41,7 +30,7 @@ export const Dashboard = () => {
 						<Balance performance={performance} />
 						<Score userScore={user.todayScore} />
 					</Graphs>
-					<Metrics data={rawInput} />
+					<Metrics userKeydata={user.keyData} />
 				</Results>
 			</Main>
 		);

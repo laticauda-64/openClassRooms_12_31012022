@@ -1,18 +1,16 @@
 import styled from 'styled-components';
 import { Stats } from './Stats';
 
-export const Metrics = ({ data }) => {
+export const Metrics = ({ userKeydata }) => {
 	const convertPropToArray = (obj) => Object.keys(obj).map((key) => [key, obj[key]]);
 
 	return (
 		<SideBar>
-			{convertPropToArray(data.keyData).map((e, i) => (
+			{convertPropToArray(userKeydata).map((e, i) => (
 				<Stats key={i} type={e[0]} val={e[1]} />
 			))}
 		</SideBar>
 	);
-
-	// console.log(convertPropToArray(user.keyData));
 };
 
 const SideBar = styled.ul`
