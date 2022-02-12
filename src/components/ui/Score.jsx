@@ -18,7 +18,7 @@ export const Score = ({ userScore }) => {
 						dataKey="value"
 						data={[
 							{ name: 'score', value: userScore },
-							{ name: 'total', value: 0.5 - userScore },
+							{ name: 'total', value: 0.9 - userScore },
 						]}>
 						<Cell fill="#E60000" stroke="#E60000" />
 						<Cell fill="transparent" stroke="transparent" />
