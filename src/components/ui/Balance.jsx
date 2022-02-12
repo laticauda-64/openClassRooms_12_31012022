@@ -1,4 +1,4 @@
-import { Legend, PolarAngleAxis, PolarGrid, Radar, RadarChart, ResponsiveContainer } from 'recharts';
+import { Legend, PolarAngleAxis, PolarGrid, PolarRadiusAxis, Radar, RadarChart, ResponsiveContainer } from 'recharts';
 import styled from 'styled-components';
 
 export const Balance = ({ performance }) => {
@@ -9,7 +9,8 @@ export const Balance = ({ performance }) => {
 			{Object.keys(performance).length <= 0 ? null : (
 				<ResponsiveContainer width="100%" height="100%">
 					<RadarChart cx="50%" cy="50%" outerRadius="65%" startAngle={210} endAngle={570} data={performance.data}>
-						<PolarGrid />
+						<PolarGrid radialLines={false} />
+						<PolarRadiusAxis tickCount={6} tick={false} axisLine={false} />
 						<PolarAngleAxis dataKey="kind" tickFormatter={formatTick} tick={{ fill: '#FFFFFF', fontSize: '0.875em' }} />
 						<Radar legendType="none" dataKey="value" stroke="#E60000" fill="#E60000" fillOpacity={0.7} />
 						<Legend />
