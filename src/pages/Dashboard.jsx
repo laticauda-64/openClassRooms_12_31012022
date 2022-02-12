@@ -12,21 +12,23 @@ import { Error404 } from './Error404';
 export const Dashboard = () => {
 	let params = useParams();
 
-	const { user, activity, sesssionsAverage, performance, getUser } = useStore();
+	const { user, activity, sessionsAverage, performance, getUser } = useStore();
 
 	useEffect(() => {
-		getUser();
+		getUser(parseInt(params.id));
 	}, []);
 
 	if (user) {
 		return (
 			<Main>
-				<h1>Bonjour {user.userInfos.firstName && <span>Thomas</span>}</h1>
+				<h1>
+					Bonjour <span>{user.userInfos.firstName}</span>
+				</h1>
 				<MainDesc>Félicitation ! Vous avez explosé vos objectifs hier 👏</MainDesc>
 				<Results>
 					<Graphs>
 						<Activity activity={activity} />
-						<TimingSession sesssionsAverage={sesssionsAverage} />
+						<TimingSession sessionsAverage={sessionsAverage.sessions} />
 						<Balance performance={performance} />
 						<Score userScore={user.todayScore} />
 					</Graphs>

@@ -8,10 +8,22 @@ const store = (set, get) => ({
 	activity: {},
 	sessionsAverage: {},
 	performance: {},
-	getUser: async () => {
+	getUser: async (userId) => {
 		if (config.mockedData) {
-			set({ user: users[0], activity: activities[0], sessionsAverage: sessionsList[0], performance: performances[0] }, true, 'setMockedData');
-			return;
+			const userIndex = users.findIndex((user) => user.id === userId);
+			if (userIndex >= 0) {
+				set(
+					{
+						user: users[userIndex],
+						activity: activities[userIndex],
+						sessionsAverage: sessionsList[userIndex],
+						performance: performances[userIndex],
+					},
+					true,
+					'setMockedData'
+				);
+				return;
+			}
 		}
 		// Should we use mocked Data or fetch api ?
 		fetch('http://localhost:3000/user/12')
