@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import { PieChart, Pie, Legend, Cell, ResponsiveContainer } from 'recharts';
 
-export const Score = () => {
+export const Score = ({ userScore }) => {
+	console.log(userScore);
 	return (
 		<Figure>
 			<Title>Score</Title>
@@ -17,8 +18,8 @@ export const Score = () => {
 						cornerRadius={'50%'}
 						dataKey="value"
 						data={[
-							{ name: 'score', value: 0.12 },
-							{ name: 'total', value: 0.5 - 0.12 },
+							{ name: 'score', value: userScore },
+							{ name: 'total', value: 0.5 - userScore },
 						]}>
 						<Cell fill="#E60000" stroke="#E60000" />
 						<Cell fill="transparent" stroke="transparent" />

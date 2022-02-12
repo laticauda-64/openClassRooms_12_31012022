@@ -4,7 +4,7 @@ import config from '../config/config';
 import { users, activities, sessionsList, performances } from '../assets/data/mock';
 
 const store = (set, get) => ({
-	user: {},
+	user: false,
 	activity: {},
 	sessionsAverage: {},
 	performance: {},

@@ -1,10 +1,7 @@
 import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer } from 'recharts';
 import styled from 'styled-components';
-import { useStore } from '../../utils/useStore';
 
-export const Activity = () => {
-	const { activity } = useStore();
-
+export const Activity = ({ activity }) => {
 	if (Object.keys(activity).length <= 0) {
 		return null;
 	} else {

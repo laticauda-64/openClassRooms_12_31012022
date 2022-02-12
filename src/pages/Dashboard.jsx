@@ -7,12 +7,13 @@ import { Balance } from '../components/ui/Balance';
 import { Score } from '../components/ui/Score';
 import { TimingSession } from '../components/ui/TimingSession';
 import { useStore } from '../utils/useStore';
+import { Error404 } from './Error404';
 
 export const Dashboard = () => {
 	let params = useParams();
 	console.log(params.id);
 
-	const { user, getUser } = useStore();
+	const { user, activity, sesssionsAverage, performance, getUser } = useStore();
 
 	useEffect(() => {
 		getUser();
@@ -28,21 +29,25 @@ export const Dashboard = () => {
 		},
 	};
 
-	return (
-		<Main>
-			<h1>Bonjour {user?.userInfos?.firstName && <span>Thomas</span>}</h1>
-			<MainDesc>Félicitation ! Vous avez explosé vos objectifs hier 👏</MainDesc>
-			<Results>
-				<Graphs>
-					<Activity />
-					<TimingSession />
-					<Balance />
-					<Score />
-				</Graphs>
-				<Metrics data={rawInput} />
-			</Results>
-		</Main>
-	);
+	if (user) {
+		return (
+			<Main>
+				<h1>Bonjour {user.userInfos.firstName && <span>Thomas</span>}</h1>
+				<MainDesc>Félicitation ! Vous avez explosé vos objectifs hier 👏</MainDesc>
+				<Results>
+					<Graphs>
+						<Activity activity={activity} />
+						<TimingSession sesssionsAverage={sesssionsAverage} />
+						<Balance performance={performance} />
+						<Score userScore={user.todayScore} />
+					</Graphs>
+					<Metrics data={rawInput} />
+				</Results>
+			</Main>
+		);
+	}
+
+	return <Error404 />;
 };
 
 const Main = styled.section`

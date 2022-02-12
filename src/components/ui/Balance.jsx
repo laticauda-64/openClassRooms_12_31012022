@@ -1,10 +1,7 @@
 import { Legend, PolarAngleAxis, PolarGrid, Radar, RadarChart, ResponsiveContainer } from 'recharts';
 import styled from 'styled-components';
-import { useStore } from '../../utils/useStore';
 
-export const Balance = () => {
-	const { performance } = useStore();
-
+export const Balance = ({ performance }) => {
 	const formatTick = (id) => performance.kind[id].charAt(0).toUpperCase() + performance.kind[id].slice(1);
 
 	return (
