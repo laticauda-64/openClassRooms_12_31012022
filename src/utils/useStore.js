@@ -9,6 +9,7 @@ const store = (set, get) => ({
 	sessionsAverage: {},
 	performance: {},
 	getUser: async (userId) => {
+		// If we are in offline mode, search user in Mocked Data
 		if (config.mockedData) {
 			const userIndex = users.findIndex((user) => user.id === userId);
 			if (userIndex >= 0) {
@@ -25,36 +26,36 @@ const store = (set, get) => ({
 				return;
 			}
 		}
-		// Should we use mocked Data or fetch api ?
-		fetch('http://localhost:3000/user/12')
+		// If not, so fetch the api
+		fetch(`http://localhost:3000/user/${userId}`)
 			.then((resp) => resp.json())
 			.then((resp) => {
 				console.log(resp.data);
 				set({ user: resp.data }, false, 'setUser');
-				get().getActivity();
-				get().getSessions();
-				get().getPerformance();
+				get().getActivity(userId);
+				get().getSessions(userId);
+				get().getPerformance(userId);
 			})
 			.catch((error) => console.error(error));
 	},
-	getActivity: async () => {
-		fetch('http://localhost:3000/user/12/activity')
+	getActivity: async (userId) => {
+		fetch(`http://localhost:3000/user/${userId}/activity`)
 			.then((resp) => resp.json())
 			.then((resp) => {
 				console.log(resp.data);
 				set({ activity: resp.data }, false, 'setActivity');
 			});
 	},
-	getSessions: async () => {
-		fetch('http://localhost:3000/user/12/average-sessions')
+	getSessions: async (userId) => {
+		fetch(`http://localhost:3000/user/${userId}/average-sessions`)
 			.then((resp) => resp.json())
 			.then((resp) => {
 				console.log(resp.data);
 				set({ sessionsAverage: resp.data }, false, 'setSessionsAverage');
 			});
 	},
-	getPerformance: async () => {
-		fetch('http://localhost:3000/user/12/performance')
+	getPerformance: async (userId) => {
+		fetch(`http://localhost:3000/user/${userId}/performance`)
 			.then((resp) => resp.json())
 			.then((resp) => {
 				console.log(resp.data);
