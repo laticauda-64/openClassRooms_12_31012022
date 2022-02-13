@@ -1,43 +1,40 @@
 import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer } from 'recharts';
 import styled from 'styled-components';
+import propTypes from 'prop-types';
 
 export const Activity = ({ activity }) => {
-	if (Object.keys(activity).length <= 0) {
-		return null;
-	} else {
-		return (
-			<Figure>
-				<Legend>
-					<h2>Activité quotidienne</h2>
-					<ul>
-						<li>Poids (kg)</li>
-						<li>Calories brûlées (kCal)</li>
-					</ul>
-				</Legend>
-				<ResponsiveContainer width="100%" height="80%">
-					<BarChart data={activity.sessions}>
-						<CartesianGrid strokeDasharray="2" vertical={false} />
-						<XAxis dataKey="day" tickMargin={16} tickFormatter={(day) => new Date(day).getDate()} tickSize={0} minTickGap={30} />
-						<YAxis
-							yAxisId="kilogram"
-							orientation="right"
-							tickMargin={40}
-							tickSize={0}
-							axisLine={false}
-							domain={['dataMin-5', 'dataMax+0']}
-							interval={'preserveEnd'}
-							tickCount={3}
-						/>
-						<YAxis yAxisId="calories" hide orientation="right" domain={['dataMin-100', 'dataMax+0']} />
-						<Tooltip content={<CustomTooltip />} />
-						<Bar yAxisId="kilogram" dataKey="kilogram" fill="#282D30" barSize={10} radius={[5, 5, 0, 0]} />
-						<Bar yAxisId="calories" dataKey="calories" fill="transparent" barSize={3} />
-						<Bar yAxisId="calories" dataKey="calories" fill="#E60000" barSize={10} radius={[5, 5, 0, 0]} />
-					</BarChart>
-				</ResponsiveContainer>
-			</Figure>
-		);
-	}
+	return (
+		<Figure>
+			<Legend>
+				<h2>Activité quotidienne</h2>
+				<ul>
+					<li>Poids (kg)</li>
+					<li>Calories brûlées (kCal)</li>
+				</ul>
+			</Legend>
+			<ResponsiveContainer width="100%" height="80%">
+				<BarChart data={activity.sessions}>
+					<CartesianGrid strokeDasharray="2" vertical={false} />
+					<XAxis dataKey="day" tickMargin={16} tickFormatter={(day) => new Date(day).getDate()} tickSize={0} minTickGap={30} />
+					<YAxis
+						yAxisId="kilogram"
+						orientation="right"
+						tickMargin={40}
+						tickSize={0}
+						axisLine={false}
+						domain={['dataMin-5', 'dataMax+0']}
+						interval={'preserveEnd'}
+						tickCount={3}
+					/>
+					<YAxis yAxisId="calories" hide orientation="right" domain={['dataMin-100', 'dataMax+0']} />
+					<Tooltip content={<CustomTooltip />} />
+					<Bar yAxisId="kilogram" dataKey="kilogram" fill="#282D30" barSize={10} radius={[5, 5, 0, 0]} />
+					<Bar yAxisId="calories" dataKey="calories" fill="transparent" barSize={3} />
+					<Bar yAxisId="calories" dataKey="calories" fill="#E60000" barSize={10} radius={[5, 5, 0, 0]} />
+				</BarChart>
+			</ResponsiveContainer>
+		</Figure>
+	);
 };
 
 const CustomTooltip = ({ active, payload }) =>
@@ -114,3 +111,12 @@ const TooltipBlock = styled.div`
 		margin-bottom: 10px;
 	}
 `;
+
+Activity.propTypes = {
+	activity: propTypes.object,
+};
+
+CustomTooltip.propTypes = {
+	active: propTypes.bool,
+	payload: propTypes.array,
+};

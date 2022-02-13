@@ -1,4 +1,5 @@
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
+import propTypes from 'prop-types';
 import styled from 'styled-components';
 
 export const TimingSession = ({ sessionsAverage }) => {
@@ -59,3 +60,12 @@ const ToolTipLabel = styled.div`
 	background: #f1f1f1;
 	font-size: 10px;
 `;
+
+TimingSession.propTypes = {
+	sessionsAverage: propTypes.array.isRequired,
+};
+
+CustomTooltip.propTypes = {
+	active: propTypes.bool,
+	payload: propTypes.array,
+};

@@ -3,6 +3,7 @@ import Energy from '../../assets/img/energy.svg';
 import Protein from '../../assets/img/chicken.svg';
 import Glucid from '../../assets/img/apple.svg';
 import Lipid from '../../assets/img/cheeseburger.svg';
+import propTypes from 'prop-types';
 
 export const Stats = ({ type, val }) => {
 	const keyData = () => {
@@ -64,3 +65,8 @@ const Icon = styled.div`
 	margin-left: 32px;
 	margin-right: 24px;
 `;
+
+Stats.propTypes = {
+	type: propTypes.string,
+	val: propTypes.string,
+};

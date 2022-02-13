@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Stats } from './Stats';
+import propTypes from 'prop-types';
 
 export const Metrics = ({ userKeydata }) => {
 	const convertPropToArray = (obj) => Object.keys(obj).map((key) => [key, obj[key]]);
@@ -20,3 +21,7 @@ const SideBar = styled.ul`
 	align-items: stretch;
 	justify-content: space-between;
 `;
+
+Metrics.propTypes = {
+	userKeydata: propTypes.object,
+};

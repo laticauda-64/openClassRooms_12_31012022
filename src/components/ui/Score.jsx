@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { PieChart, Pie, Legend, Cell, ResponsiveContainer } from 'recharts';
+import propTypes from 'prop-types';
 
 export const Score = ({ userScore }) => {
 	return (
@@ -72,3 +73,11 @@ const Desc = styled.div`
 	color: rgb(116, 121, 140);
 	font-size: 14px;
 `;
+
+Score.propTypes = {
+	userScore: propTypes.number,
+};
+
+CustomLegend.propTypes = {
+	payload: propTypes.array,
+};
