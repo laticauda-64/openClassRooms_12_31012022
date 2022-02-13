@@ -22,11 +22,11 @@ export const Activity = ({ activity }) => {
 						tickMargin={40}
 						tickSize={0}
 						axisLine={false}
-						domain={['dataMin-5', 'dataMax+0']}
+						domain={['dataMin-5', 'dataMax+10']}
 						interval={'preserveEnd'}
 						tickCount={3}
 					/>
-					<YAxis yAxisId="calories" hide orientation="right" domain={['dataMin-100', 'dataMax+0']} />
+					<YAxis yAxisId="calories" hide orientation="right" domain={['dataMin-150', 'dataMax+0']} />
 					<Tooltip content={<CustomTooltip />} />
 					<Bar yAxisId="kilogram" dataKey="kilogram" fill="#282D30" barSize={10} radius={[5, 5, 0, 0]} />
 					<Bar yAxisId="calories" dataKey="calories" fill="transparent" barSize={3} />
