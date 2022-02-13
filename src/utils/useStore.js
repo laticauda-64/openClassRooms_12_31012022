@@ -31,7 +31,7 @@ const store = (set, get) => ({
 			.then((resp) => resp.json())
 			.then((resp) => {
 				console.log(resp.data);
-				set({ user: resp.data }, false, 'setUser');
+				set({ user: resp.data }, false, 'setUser (Api)');
 				get().getActivity(userId);
 				get().getSessions(userId);
 				get().getPerformance(userId);
@@ -43,7 +43,7 @@ const store = (set, get) => ({
 			.then((resp) => resp.json())
 			.then((resp) => {
 				console.log(resp.data);
-				set({ activity: resp.data }, false, 'setActivity');
+				set({ activity: resp.data }, false, 'setActivity (Api)');
 			});
 	},
 	getSessions: async (userId) => {
@@ -51,7 +51,7 @@ const store = (set, get) => ({
 			.then((resp) => resp.json())
 			.then((resp) => {
 				console.log(resp.data);
-				set({ sessionsAverage: resp.data }, false, 'setSessionsAverage');
+				set({ sessionsAverage: resp.data }, false, 'setSessionsAverage  (Api)');
 			});
 	},
 	getPerformance: async (userId) => {
@@ -59,7 +59,7 @@ const store = (set, get) => ({
 			.then((resp) => resp.json())
 			.then((resp) => {
 				console.log(resp.data);
-				set({ performance: resp.data }, false, 'setPeformance');
+				set({ performance: resp.data }, false, 'setPeformance  (Api)');
 			});
 	},
 });
