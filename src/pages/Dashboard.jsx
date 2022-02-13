@@ -8,6 +8,7 @@ import { Score } from '../components/ui/Score';
 import { TimingSession } from '../components/ui/TimingSession';
 import { useStore } from '../utils/useStore';
 import { Error404 } from './Error404';
+import { Loader } from './Loader';
 
 export const Dashboard = () => {
 	let params = useParams();
@@ -19,23 +20,27 @@ export const Dashboard = () => {
 	}, []);
 
 	if (user) {
-		return (
-			<Main>
-				<h1>
-					Bonjour <span>{user.userInfos.firstName}</span>
-				</h1>
-				<MainDesc>Félicitation ! Vous avez explosé vos objectifs hier 👏</MainDesc>
-				<Results>
-					<Graphs>
-						<Activity activity={activity} />
-						<TimingSession sessionsAverage={sessionsAverage.sessions} />
-						<Balance performance={performance} />
-						<Score userScore={user.todayScore} />
-					</Graphs>
-					<Metrics userKeydata={user.keyData} />
-				</Results>
-			</Main>
-		);
+		if (activity.sessions && sessionsAverage.sessions && performance.data) {
+			return (
+				<Main>
+					<h1>
+						Bonjour <span>{user.userInfos.firstName}</span>
+					</h1>
+					<MainDesc>Félicitation ! Vous avez explosé vos objectifs hier 👏</MainDesc>
+					<Results>
+						<Graphs>
+							<Activity activity={activity} />
+							<TimingSession sessionsAverage={sessionsAverage.sessions} />
+							<Balance performance={performance} />
+							<Score userScore={user.todayScore} />
+						</Graphs>
+						<Metrics userKeydata={user.keyData} />
+					</Results>
+				</Main>
+			);
+		}
+
+		return <Loader />;
 	}
 
 	return <Error404 />;
