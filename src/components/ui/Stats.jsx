@@ -5,6 +5,13 @@ import Glucid from '../../assets/img/apple.svg';
 import Lipid from '../../assets/img/cheeseburger.svg';
 import propTypes from 'prop-types';
 
+/**
+ * This will display each statistic component on the right with the right icon/color
+ * @param {Object} params
+ * @param {String} params.type
+ * @param {Number} params.val
+ * @returns {JSX}
+ */
 export const Stats = ({ type, val }) => {
 	const keyData = () => {
 		switch (type) {

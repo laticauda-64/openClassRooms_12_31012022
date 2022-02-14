@@ -2,6 +2,12 @@ import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContaine
 import styled from 'styled-components';
 import propTypes from 'prop-types';
 
+/**
+ * This will render the activity report bar chart
+ * @param {Object} params
+ * @param {Array} params.sessions
+ * @returns {JSX}
+ */
 export const Activity = ({ activity }) => {
 	return (
 		<Figure>
@@ -37,6 +43,13 @@ export const Activity = ({ activity }) => {
 	);
 };
 
+/**
+ * Show custom label on the graph
+ * @param {Object} params
+ * @param {Boolean} params.active
+ * @param {Array} params.payload
+ * @return {JSX || null}
+ */
 const CustomTooltip = ({ active, payload }) =>
 	active ? (
 		<TooltipBlock>

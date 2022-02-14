@@ -2,6 +2,12 @@ import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'rec
 import propTypes from 'prop-types';
 import styled from 'styled-components';
 
+/**
+ * This will render the average session duration graph
+ * @param {Object} params
+ * @param {Array} params.data
+ * @returns {JSX}
+ */
 export const TimingSession = ({ sessionsAverage }) => {
 	// Format day of the week
 	const daysWeek = { 1: 'L', 2: 'M', 3: 'M', 4: 'J', 5: 'V', 6: 'S', 7: 'D' };
@@ -24,6 +30,7 @@ export const TimingSession = ({ sessionsAverage }) => {
 					/>
 					<YAxis hide domain={['dataMin-10', 'dataMax+1']} />
 					<Tooltip content={<CustomTooltip />} />
+
 					<Line type="monotone" dataKey="sessionLength" stroke="#FFFFFF" activeDot={{ r: 8 }} dot={{ r: 0 }} strokeWidth={2} />
 				</LineChart>
 			</ResponsiveContainer>
@@ -31,6 +38,13 @@ export const TimingSession = ({ sessionsAverage }) => {
 	);
 };
 
+/**
+ * Show custom label on the graph
+ * @param {Object} params
+ * @param {Boolean} params.active
+ * @param {Array} params.payload
+ * @return {JSX || null}
+ */
 const CustomTooltip = ({ active, payload }) =>
 	active ? (
 		<ToolTipLabel>

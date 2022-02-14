@@ -2,6 +2,6 @@
  * Configure application here
  */
 const config = {
-	mockedData: true,
+	mockedData: false,
 };
 export default config;

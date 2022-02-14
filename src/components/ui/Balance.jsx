@@ -2,6 +2,13 @@ import { Legend, PolarAngleAxis, PolarGrid, PolarRadiusAxis, Radar, RadarChart, 
 import styled from 'styled-components';
 import propTypes from 'prop-types';
 
+/**
+ * This componnent will render the 'web' graph
+ * @param {Object} params
+ * @param {Object} params.kind
+ * @param {Array} params.data
+ * @returns {JSX}
+ */
 export const Balance = ({ performance }) => {
 	const frenchTranslation = {
 		cardio: 'Cardio',

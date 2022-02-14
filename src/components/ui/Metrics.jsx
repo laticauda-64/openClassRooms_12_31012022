@@ -2,6 +2,11 @@ import styled from 'styled-components';
 import { Stats } from './Stats';
 import propTypes from 'prop-types';
 
+/**
+ * This component will wrap all the stats components on the right sidebar
+ * @param {Object} params
+ * @returns {JSX}
+ */
 export const Metrics = ({ userKeydata }) => {
 	const convertPropToArray = (obj) => Object.keys(obj).map((key) => [key, obj[key]]);
 

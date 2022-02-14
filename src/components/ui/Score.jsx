@@ -2,6 +2,12 @@ import styled from 'styled-components';
 import { PieChart, Pie, Legend, Cell, ResponsiveContainer } from 'recharts';
 import propTypes from 'prop-types';
 
+/**
+ * This will display the user score graph
+ * @param {Object} params
+ * @param {Number} params.todayScore
+ * @returns {JSX}
+ */
 export const Score = ({ userScore }) => {
 	return (
 		<Figure>
@@ -31,7 +37,13 @@ export const Score = ({ userScore }) => {
 		</Figure>
 	);
 };
-
+/**
+ * Show custom label on the graph
+ * @param {Object} params
+ * @param {Boolean} params.active
+ * @param {Array} params.payload
+ * @return {JSX || null}
+ */
 const CustomLegend = ({ payload }) => (
 	<LegendCustom>
 		<BigNum>{payload[0].payload.value * 100}%</BigNum>
