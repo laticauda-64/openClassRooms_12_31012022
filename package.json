@@ -2,7 +2,7 @@
 	"name": "tableau-de-bord-analytics-oc-p12",
 	"version": "0.0.0",
 	"scripts": {
-		"dev": "PORT=3006 vite",
+		"dev": "vite",
 		"build": "vite build",
 		"preview": "vite preview"
 	},
