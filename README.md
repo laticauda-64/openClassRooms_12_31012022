@@ -1,5 +1,9 @@
 # OpenClassRooms Projet 12 - Develop an analytic dashboard with React
 
+<p align="center">
+  <img src="https://user.oc-static.com/upload/2020/08/18/15977560509272_logo%20%285%29.png" height="150px" alt="Sport See logo"/>
+</p>
+
 This git repository contains all necessary code to run the React web app (Front).
 
 ## Let's get started !
